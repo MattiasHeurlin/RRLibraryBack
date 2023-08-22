@@ -16,8 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<LibraryContext>(options => {
-
-    options.UseInMemoryDatabase("Library"); // Would connect a real database in a live scenario. This app is a code test.
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
